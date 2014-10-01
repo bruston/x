@@ -20,11 +20,6 @@ const (
 
 var client http.Client
 
-type result struct {
-	url        string
-	vulnerable bool
-}
-
 func main() {
 	url := flag.String("url", "", "The URL to check.")
 	verbose := flag.Bool("verbose", false, "If true, the response body will be printed.")
