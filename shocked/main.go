@@ -105,7 +105,9 @@ func bashMany(verbose bool, work chan string, wg *sync.WaitGroup) {
 	for url := range work {
 		vuln, err := bashit(url, verbose)
 		if err != nil {
-			log.Println(err)
+			if verbose {
+				log.Println(err)
+			}
 			continue
 		}
 		if vuln {

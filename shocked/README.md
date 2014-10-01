@@ -3,7 +3,7 @@ Simple shellshock vulnerability test.
 <pre>
 Usage of ./shocked (and its defaults):
   -stdin=false: If true, a list of URLs to check is read from Stdin.
-  -timeout=10: How long to wait for a response before giving up.
+  -timeout=10: Number of seconds to wait for a response before giving up.
   -url="": The URL to check.
   -verbose=false: If true, the response body will be printed.
   -workers=5: The number of concurrent requests to make.
