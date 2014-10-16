@@ -2,7 +2,6 @@ from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.poolmanager import PoolManager
 import requests
 import ssl
-import sys
 from flask import Flask
 from flask import render_template
 from flask import request
