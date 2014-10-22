@@ -23,6 +23,7 @@ func main() {
 }
 
 func writeJSON(w http.ResponseWriter, data interface{}, statusCode int) error {
+	w.Header().Set("Content-Type", "application/json")
 	return json.NewEncoder(w).Encode(data)
 }
 
@@ -65,12 +66,12 @@ func tryPort(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	ip := addrFromRequest(r)
-	con, err := net.Dial("tcp", fmt.Sprintf("%s:%d", ip, port))
+	conn, err := net.Dial("tcp", fmt.Sprintf("%s:%d", ip, port))
 	if err != nil {
 		writeJSON(w, portStatus{ip, port, false, err.Error()}, http.StatusOK)
 		return
 	}
-	con.Close()
+	conn.Close()
 	writeJSON(w, portStatus{ip, port, true, ""}, http.StatusOK)
 }
 
