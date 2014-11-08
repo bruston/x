@@ -52,12 +52,11 @@ func main() {
 	wg.Wait()
 }
 
-func setHeaders(r *http.Request) *http.Request {
+func setHeaders(r *http.Request) {
 	headers := []string{"User-Agent", "Host", "Cookie", "Referer"}
 	for _, v := range headers {
 		r.Header.Set(v, PAYLOAD_PREFIX+PAYLOAD_ECHO)
 	}
-	return r
 }
 
 func bashit(url string, verbose bool) (bool, error) {
