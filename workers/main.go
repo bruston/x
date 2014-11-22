@@ -25,28 +25,27 @@ func main() {
 	workers := flag.Int("workers", 5, "Number of workers to use.")
 	file := flag.String("file", "", "The input file to use. If none is supplied, stdin is assumed.")
 	timeout := flag.Int("timeout", 10, "Max number of seconds to wait for a response from the URL.")
-	var worker worker
 	flag.Parse()
 
-	work := make(chan interface{})
+	workCh := make(chan interface{})
 
 	if *file == "" {
-		go feedURLs(work, os.Stdin)
+		go feedURLs(workCh, os.Stdin)
 	} else {
 		urls, err := os.Open(*file)
 		if err != nil {
 			log.Fatal("unable to open input file:", err)
 		}
 		defer urls.Close()
-		go feedURLs(work, urls)
+		go feedURLs(workCh, urls)
 	}
 
 	var wg sync.WaitGroup
-	worker = URLChecker{timeout: *timeout}
+	wrkr := URLChecker{timeout: *timeout}
 
 	for i := 0; i < *workers; i++ {
 		wg.Add(1)
-		go worker.work(work, &wg)
+		go wrkr.work(workCh, &wg)
 	}
 
 	wg.Wait()
