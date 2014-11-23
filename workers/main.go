@@ -66,9 +66,9 @@ func (w URLChecker) work(urls chan interface{}, wg *sync.WaitGroup) {
 			continue
 		}
 
+		fmt.Printf("%s %d %6.3fms\n", url, resp.StatusCode, time.Since(start).Seconds()*1000)
 		io.Copy(ioutil.Discard, resp.Body)
 		resp.Body.Close()
-		fmt.Printf("%s %d %6.3fms\n", url, resp.StatusCode, time.Since(start).Seconds()*1000)
 	}
 	wg.Done()
 }
