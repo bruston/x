@@ -17,7 +17,7 @@ func TestLongest(t *testing.T) {
 		line:   3,
 		length: 29,
 	}
-	result := Longest(r)
+	result := longest(r)
 	if result != expected {
 		t.Errorf("expecting %#v, got %#v", expected, result)
 	}

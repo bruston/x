@@ -24,19 +24,19 @@ func main() {
 	flag.Parse()
 	var result Result
 	if *file == "" {
-		result = Longest(os.Stdin)
+		result = longest(os.Stdin)
 	} else {
 		f, err := os.Open(*file)
 		if err != nil {
 			log.Fatal("unable to open input file:", err)
 		}
-		result = Longest(f)
+		result = longest(f)
 		f.Close()
 	}
 	fmt.Println(result)
 }
 
-func Longest(r io.Reader) Result {
+func longest(r io.Reader) Result {
 	scanner := bufio.NewScanner(r)
 	var result Result
 	var lineNum int
