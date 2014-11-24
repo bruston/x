@@ -11,6 +11,39 @@ import (
 	"text/template"
 )
 
+var html = `
+<!DOCTYPE HTML>
+<html>
+<head>
+  <script type="text/javascript">
+      window.onload = function () {
+          var chart = new CanvasJS.Chart("chartContainer", {
+              theme: "theme2",//theme1
+              title:{
+                  text: "'uniq -c' Graph"
+             },
+              axisY:{
+                  interval: {{ .Interval }}
+              },
+              data: [
+              {
+                  type: "{{ .Type }}",
+                  dataPoints: {{ .DataPoints }}
+              }]
+          });
+
+          chart.render();
+      }
+  </script>
+</head>
+<body>
+  <div id="chartContainer" style="height: 800px; width: 100%;">
+  </div>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.4.1/canvas.min.js"></script>
+</body>
+</html>
+`
+
 type DataPoint struct {
 	Label string `json:"label"`
 	Y     int    `json:"y"`
@@ -27,6 +60,7 @@ type Graph struct {
 func main() {
 	graphType := flag.String("t", "bar", "The type of graph to generate.")
 	interval := flag.Int("i", 0, "Marker interval.")
+	customTemplate := flag.String("template", "", "Custom template to use to generate the graph HTML. Not required.")
 	flag.Parse()
 
 	var points DataCollection
@@ -47,7 +81,13 @@ func main() {
 		DataPoints: string(b),
 		Interval:   *interval,
 	}
-	t, err := template.ParseFiles("graph.tmpl.html")
+	var t *template.Template
+	var err error
+	if *customTemplate != "" {
+		t, err = template.ParseFiles(*customTemplate)
+	} else {
+		t, err = template.New("html").Parse(html)
+	}
 	if err != nil {
 		log.Fatalf("unable to parse template file:", err)
 	}
