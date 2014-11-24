@@ -26,8 +26,9 @@ type Graph struct {
 
 func main() {
 	graphType := flag.String("t", "bar", "The type of graph to generate.")
-	interval := flag.Int("i", 0, "// Todo")
+	interval := flag.Int("i", 0, "Marker interval.")
 	flag.Parse()
+
 	var points DataCollection
 	scanner := bufio.NewScanner(os.Stdin)
 	for scanner.Scan() {
@@ -39,6 +40,7 @@ func main() {
 		}
 		points = append(points, DataPoint{Label: args[1], Y: num})
 	}
+
 	b, _ := json.Marshal(points)
 	g := Graph{
 		Type:       *graphType,
