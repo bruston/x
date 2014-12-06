@@ -21,6 +21,7 @@ func main() {
 		flag.Usage()
 		return
 	}
+
 	fmt.Printf("Scanning ports %d-%d on %s...\n", *flagPortMin, *flagPortMax, *flagHost)
 	ports := feedPorts(*flagPortMin, *flagPortMax)
 
