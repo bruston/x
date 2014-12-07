@@ -14,7 +14,7 @@ func main() {
 	flagHost := flag.String("host", "localhost", "The hostname/IP address to scan.")
 	flagPortMin := flag.Uint("min", 1, "The scanning starting port.")
 	flagPortMax := flag.Uint("max", 1024, "The scanning end port.")
-	flagTimeout := flag.Int("timeout", 5, "Time in seconds to wait for a port probe before giving up.")
+	flagTimeout := flag.Duration("timeout", 5, "Time in seconds to wait for a port probe before giving up.")
 	flag.Parse()
 
 	if *flagHost == "" {
@@ -28,7 +28,7 @@ func main() {
 	var wg sync.WaitGroup
 	for i := 0; i < *flagMaxConn; i++ {
 		wg.Add(1)
-		go checker(*flagHost, ports, &wg, time.Duration(*flagTimeout)*time.Second)
+		go checker(*flagHost, ports, &wg, *flagTimeout*time.Second)
 	}
 
 	wg.Wait()
