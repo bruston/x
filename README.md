@@ -7,6 +7,7 @@ This README will serve as in index.
 * [nettools](https://github.com/bruston/x/tree/master/nettools) - Tiny REST API for returning some basic information like the callers IP address and host names.
 * [poodle](https://github.com/bruston/x/tree/master/poodle) - A small web app to test if a server supports SSLv3, in light of the POODLE vulnerability.
 * [prettyjson](https://github.com/bruston/x/tree/master/prettyjson) - JSON pretty printing tool/snippet.
+* [randseed](https://github.com/bruston/x/tree/master/randseed) - PRNG seeding snippet.
 * [shocked](https://github.com/bruston/x/tree/master/shocked) - Shellshock vulnerablity test.
 * [strictertls](https://github.com/bruston/x/tree/master/strictertls) - A stricter TLS web server example.
 * [tcpscan](https://github.com/bruston/x/tree/master/tcpscan) - tcpscan is a toy TCP port scanner in Go.
