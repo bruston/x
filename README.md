@@ -11,5 +11,6 @@ This README will serve as in index.
 * [shocked](https://github.com/bruston/x/tree/master/shocked) - Shellshock vulnerablity test.
 * [strictertls](https://github.com/bruston/x/tree/master/strictertls) - A stricter TLS web server example.
 * [tcpscan](https://github.com/bruston/x/tree/master/tcpscan) - tcpscan is a toy TCP port scanner in Go.
+* [tcpserver](https://github.com/bruston/x/tree/master/tcpserver) - An example/skeleton TCP server in Go.
 * [uniqgraph](https://github.com/bruston/x/tree/master/uniqgraph) - Takes output from "uniq -c" and spits out HTML and embedded javascript to render a graph with canvasjs.
 * [workers](https://github.com/bruston/x/tree/master/workers) - Demonstrates usage of a worker pool by concurrently checking the status and response times of a list of URLs.
