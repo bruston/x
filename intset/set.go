@@ -30,6 +30,15 @@ func (s IntSet) Contains(num int) bool {
 	return false
 }
 
+func (s IntSet) Ints() []int {
+	var ints []int
+	for n := range s.ints {
+		ints = append(ints, n)
+	}
+	sort.Ints(ints)
+	return ints
+}
+
 func Union(set1, set2 IntSet) IntSet {
 	union := NewIntSet(nil)
 	for n := range set1.ints {
@@ -56,10 +65,5 @@ func Equals(set1, set2 IntSet) bool {
 }
 
 func (s IntSet) String() string {
-	var ints []int
-	for n := range s.ints {
-		ints = append(ints, n)
-	}
-	sort.Ints(ints)
-	return fmt.Sprintf("%v", ints)
+	return fmt.Sprintf("%v", s.Ints())
 }
