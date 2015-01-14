@@ -11,8 +11,7 @@ import (
 
 func seed() error {
 	var s int64
-	err := binary.Read(crand.Reader, binary.BigEndian, &s)
-	if err != nil {
+	if err := binary.Read(crand.Reader, binary.BigEndian, &s); err != nil {
 		return err
 	}
 	rand.Seed(s)
