@@ -15,8 +15,11 @@ type LimitedReader struct {
 func New(r io.Reader, n int64) io.Reader { return &LimitedReader{r, n} }
 
 func (l *LimitedReader) Read(b []byte) (int, error) {
-	if l.N <= 0 {
+	if l.N < 0 {
 		return 0, ErrReadLimitExceeded
+	}
+	if l.N == 0 {
+		return 0, io.EOF
 	}
 	if int64(len(b)) > l.N {
 		b = b[0:l.N]
