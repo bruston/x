@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	listen := flag.String("listen", "127.0.0.1:8000", "The host:port to listen on.")
+	listen := flag.String("listen", "localhost:8000", "The host:port to listen on.")
 	dir := flag.String("dir", "", "The directory to serve. Current directory used if left empty.")
 	showDebug := flag.Bool("debug", true, "Log request information to the console.")
 	flag.Parse()
