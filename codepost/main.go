@@ -10,7 +10,7 @@ import (
 
 const (
 	comment    = "// "
-	startBlock = "```Go"
+	startBlock = "```go"
 	endBlock   = "```"
 	spaceJunk  = " \t"
 )
