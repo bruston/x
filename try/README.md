@@ -3,7 +3,7 @@ try
 
 Package try provides simple, throttled retrying.
 
-Godoc: https://godoc.org/github.com/bruston/try
+Godoc: https://godoc.org/github.com/bruston/x/try
 
 ## Examples
 
@@ -19,7 +19,7 @@ import (
     "net/http"
     "time"
 
-    "github.com/bruston/try"
+    "github.com/bruston/x/try"
 )
 
 func main() {
@@ -53,7 +53,7 @@ import (
     "net"
     "time"
 
-    "github.com/bruston/try"
+    "github.com/bruston/x/try"
 )
 
 func main() {
@@ -91,4 +91,4 @@ type Throttler interface {
 }
 ```
 
-Which can be passed to [Do](https://godoc.org/github.com/bruston/try#Do).
+Which can be passed to [Do](https://godoc.org/github.com/bruston/x/try#Do).
