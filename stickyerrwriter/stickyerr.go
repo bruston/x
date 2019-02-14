@@ -15,12 +15,12 @@ type StickyErrorWriter struct {
 
 func (s *StickyErrorWriter) Write(p []byte) (int, error) {
 	if s.err != nil {
-		return len(p), nil
+		return 0, nil
 	}
 	n, err := s.Writer.Write(p)
 	if err != nil {
 		s.err = err
-		return len(p), nil
+		return n, nil
 	}
 	return n, nil
 }
